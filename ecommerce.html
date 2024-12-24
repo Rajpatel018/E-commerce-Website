@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop<a>NOW</a></title>
+    <style>
+. a {
+    color: red;
+}
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.cart {
+    float:right;
+}
+
+main {
+    padding: 20px;
+}
+
+.product {
+    border: 1px solid #ccc;
+    border-radius: 10PX;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+    height: 100px;
+}
+
+button {
+    background-color: #538860;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #538860;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+} 
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shop<a>NOW</a></h1>
+        <div class="cart">
+            <button id="cart-button">Cart (<span id="cart-count">0</span>)</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="product-list">
+            <div class="product" data-id="1">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQi-on6Eu2gGmp_onHUBdk8G01pLUVvHxids4CSyfqzFivHJnYVBjtS-VzeXHJdZ2tEDjFSjQtSNXUNL_ZDZz0MPwtCzBgHUhisOFpQ-BA-bRYpZGLhi7Ni" alt="Product 1">
+                <h2>Gap Kids Boys Logo Applique Zip-Front Hoodie For Boys </h2>
+                <p>499 Rs</p>
+  <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+            <button class="add-to-cart">Add to Cart</button>
+             
+            </div>
+            <div class="product" data-id="2">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR9W7BPx-4-zX9YUFGKpO5jn-onx2oMpjZZO8CD-84r1YRaNfjQt216-bGC4fD-D_mC8Je8t0LZjSadhLcqqny3w2AA_p0V-oFqaaxbCPQk8nFGvdnClpXipA" alt="Product 2">
+                <h2>TAGAS Boy's Striped Regular Fit Shirt</h2>
+                <p>999Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="3">
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSvsDwDGuGHmOjCLanwI-htKIesvi2QIlyRNniPW1E9TsFOFSDN3_RitITTM8LGdjAe80yKVT_3ndKO0s8fI9eQfHqwxNsNHgfMIhZpGaaa" alt="Product 3">
+                <h2>Difference of Opinion Men's Striped Round Neck T-Shirt</h2>
+                <p>899RS</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="4">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRz4l40YIebYvOcbjVijwePR2IEiUXJ49p23Urjb1c-bXNyWDElFSIwxFW3Lzzp6Y39yGmJLiemrG6hxYLR8jhBjAO5fBGGxjL7PmUmMULyXCvEi_0OvNp3" alt="Product 4">
+                <h2>H&M Boys' 2-piece T-shirt and Shorts Set</h2>
+                <p>1599 Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="5">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSOCpp8b3vT7osIEzZQafhQ2iTjCHLcNQEAHDrv2cxHEwb34TVpi4B_nY718zCvkyFVte-fhVsZAFedKpHbqz923txdw5c-6E_w7-Hkl0PCraaelLqYEkHQiGk" alt="Product 5">
+                <h2>H&M Men Loose Fit Sweatshirt For Men (Grey, M)</h2>
+                <p>1999 Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="6">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSZnNutye1wMeI7t-NKCWVX9qp_hw3_3KLRmkM9YCb2XfzwyFONQIAp9mHT8q6t4UR-9OUJcYcFjlB7KT_qYfA2hScHPzJEc2ICHv-ZfrifsX-kg0Yp0Kncgw" alt="Product 6">
+                <h2>Off Duty Men's Baggy Loose Fit Pants</h2>
+                <p>799 Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="7">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ1XHleyqOHnGqtbco552b85m3d3lTm61FnqqFyH9KdK3IfrwJhwzL9D0rfA5jSXsNxgOWRDwyriDrXCs87AXa8msR8P_poM4rMWpLmnzmNwjaFeJL9p1tlYg" alt="Product 7">
+                <h2>H&M Men Loose Fit Sweatshirt For Men (Beige, L)</h2>
+                <p>699 Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="8">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTpGUwuyiwylw0dCkYkLMngQT4MqcPiLqgBqcR4LJRP9EYKLZguz7R1p7kiyJcB3mdVwsxIgFoUFioSP6COEbO8J-HVrWXTPWg1LS7hAK4wnDszuKZxvWd2" alt="Product 8">
+                <h2>Alan Jones Clothing Men's Oversize Hooded Hoodie</h2>
+                <p>499 Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="9">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRQ_fCJqctfTCK2wFRxGOc8Cv0iEE5mo5ZS8dt_-xmbLBhHK-WxU0O1pShZzBq25DBv3V17H7g_WmBXjoDG-kKZfQYRZGVlBd_kCO964BTrSSqPlQVrv68Y" alt="Product 9">
+                <h2>LymioCasual Shirt for Men| Shirt for Men</h2>
+                <p>989 Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="10">
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSSDZubgZaoTZ9d92KNsEhc_ApDARssUwYArV8OvsxnUJyvUOXfh9ypY_-8GU1ncFW2QMM42h_mlBA1-t8yLLvsFaTz7cWw3s4CnInYHvtNBQchtE0u0mewuQ" alt="Product 10">
+                <h2>Highlander Men's Oversized Over Shirt</h2>
+                <p>499 Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+            <div class="product" data-id="11">
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTvpHdT1Nke3peZraJ6RBfZz83t4bjcBpXFVJZZHE4HAa-sNTBEejE77fSvUyrPUdegWS3r6u7K4w-rPoqglMNW4tYl7UiQqH58q5FwsTrCb6uoa5DmvhmDTu_e" alt="Product 11">
+                <h2>Zara Men's Oxford Shirt</h2>
+                <p>499 Rs</p>
+                <label for="quantity">Quantity: </label>
+  <input type="number" id="quantity" value="0" min="1">
+  <!-- Quantity input -->
+                <button onclick="add-to-cart(product,price)">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <h3>Total: $<span id="total-price">0.00</span></h3>
+            <button id="checkout-button">Checkout</button>/
+            </div>
+    </div>
+    <script>
+         // Function to enable the "Add to Cart" button
+    function enableAddToCartButton() {
+      const quantityInput = document.getElementById('quantity');
+      const addToCartButton = document.getElementById('add-to-cart');
+      
+      // Enable button if quantity is greater than 0
+      if (parseInt(quantityInput.value) > 0) {
+        addToCartButton.disabled = false;
+      } else {
+        addToCartButton.disabled = true;
+      }
+    }
+
+    // Event listener for the quantity input field
+    document.getElementById('quantity').addEventListener('input', enableAddToCartButton);
+
+    // Optional: Event listener for the "Add to Cart" button (to simulate adding to cart)
+    document.getElementById('add-to-cart').addEventListener('click', function() {
+      const quantity = document.getElementById('quantity').value;
+      alert(`Added ${quantity} item(s) to the cart.`);
+    });
+
+    // Initial call to set the button state
+    enableAddToCartButton();
+    cartModal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === cartModal) {
+        cartModal.style.display = 'none';
+    }
+});
+
+function updateCart() {
+    cartCountElement.innerText = cart.length;
+}
+
+function displayCartItems() {
+    cartItemsElement.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.innerText = `${item.name} - $${item.price.toFixed(2)}`;
+        cartItemsElement.appendChild(li);
+        total += item.price;
+
+        unction enableAddToCartButton() {
+  const quantityInput = document.getElementById('quantity');
+  const addToCartButton = document.getElementById('add-to-cart');
+  const stockAvailable = 11;  // Assume we have 11 items in stock
+    });
+
+    const quantity = parseInt(quantityInput.value);
+
+    // Enable button if quantity is greater than 0 and stock is available
+  if (quantity > 0 && quantity <= stockAvailable) {
+    addToCartButton.disabled = false;
+  } else {
+    addToCartButton.disabled = true;
+  }
+}
+ </script>    
+</body>
+</html>

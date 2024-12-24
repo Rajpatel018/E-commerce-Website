@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop<a>.</a>IN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #bb5b5b;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        header nav ul li {
+            margin: 0 10px;
+        }
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        header .cart {
+            position: relative;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #f4f4f4;
+        }
+        .hero h1 {
+            font-size: 36px;
+        }
+        .hero button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hero button:hover {
+            background-color: #0056b3;
+        }
+        .products {
+            padding: 20px;
+            background-color: #fff;
+        }
+        .products .product-list {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .products .product {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            width: calc(33% - 20px);
+        }
+        .products .product img {
+            max-width: 100%;
+            height: auto;
+        }
+        .products .product button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .products .product button:hover {
+            background-color: #218838;
+        }
+        .about {
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .contact {
+            padding: 20px;
+            background-color: #fff;
+        }
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .contact form input, .contact form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact form button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact form button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cartButton = document.getElementById("cart-button");
+            const cartCount = document.getElementById("cart-count");
+            const addToCartButtons = document.querySelectorAll(".add-to-cart-button");
+
+            let cart = 0;
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    cart++;
+                    cartCount.textContent = cart;
+                    alert("Item added to cart!");
+                });
+            });
+
+            cartButton.addEventListener("click", () => {
+                alert(`You have ${cart} item(s) in your cart.`);
+            });
+
+            const contactForm = document.getElementById("contact-form");
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Thank you for contacting us! We will get back to you soon.");
+                contactForm.reset();
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">Shop<a>.</a>IN</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="cart">
+            <button id="cart-button">Cart (<span id="cart-count">0</span>)</button>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to Shop<a>.</a>IN</h1>
+        <p>“Add to cart, add to heart! ❤️💻”!</p>
+        <button id="shop-now-button">Shop Now</button>
+    </section>
+
+    <section id="products" class="products">
+        <h2>Our Products</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQfr9rYOI6WQNU5MzNI0fBoq5NdElfplfUsJYTNid2Vc3pCzIrBLsvZeagShGy6n31f1EsMvgnfh0G4kYcmdO2WEdnaJdOabaeC_Iut4-3MEz5KAR6I9dW3rQ&usqp=CAc" alt="Product 1">
+                <h3>WROGN
+                    Men Relaxed Fit Chinos Trousers</h3>
+                <p>599</p>
+                <button class="add-to-cart-button" data-id="1">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS6w7fjjMZHn5ALZ-Q8iOy9ApyYUdlIO7CpZtAR1zEuXYrDaxM5ZyCMbkAI1tF7jDvu7R7AKG0GaLearxr0yOnZji_TTvw77jyAJPUuZU8IwjWlrGQ8LtLX" alt="Product 2">
+                <h3>	
+                    FREAKINS MEN Dark Brown Straight Jeans for Men </h3>
+                <p>699</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSeluIM8UiQMHenM-4syBN6GpJF-Ab6Vuc4Z9u1MyKCOpevFNwMkKh4Qk8mv68fy5CnnZMgZGzxZ_nZp07cWwbNMoSaKCTcj0-KU-G9x2c0" alt="Product 3">
+                <h3>Sweet Dreams Midnight Luxe Beige Ultra Luxe Track Suit for Mens Ultra Luxe / Navy / XL</h3>
+                <p>899</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS2Zte7qCOJnro5kVXPFKJlF1ElqUkkMHtKCQ0pbzni_IZGsKXm0zJ9_iXhY8JxHzKQXs12D407ZNr5i0Rp0eCTtFzE8Uo-HvWBcyGdWtA4Qd5bjl3R471ZCQ&usqp=CAE" alt="Product 2">
+                <h3>	
+                    Mens Fashion Slim Fit Cotton Linen Three Piece Suit Beige / 2XL</h3>
+                <p>799</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTgyXgsMYZb2UeBuM4Zx--WW_B7be0ORTOteJ5zygKtMuOUjJgblGoPsCd2LExXv5xtVcObR0Lea41bBopRL2gsYv_X99IIp4_fUB5Q_VV8CeK-9linher66w" alt="Product 2">
+                <h3>Gap Kids Boys Logo Applique Zip-Front Hoodie For Boys (Grey, 8-9Y)</h3>
+                <p>699</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSOCpp8b3vT7osIEzZQafhQ2iTjCHLcNQEAHDrv2cxHEwb34TVpi4B_nY718zCvkyFVte-fhVsZAFedKpHbqz923txdw5c-6E_w7-Hkl0PCraaelLqYEkHQiGk" alt="Product 2">
+                <h3>H&M Men Loose Fit Sweatshirt For Men (Grey, M)</h3>
+                <p>999</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRoIL2x-K46vUxMlHlvQzTOi8uuwgDFDPqBJyr1Jsjhd0nuDz-kRdBqhuUVs4CAcZsfXvFHKAB8pVy0QDwxar8pX_Nl6l7MiYpg_JuSD-s8Rz1njN7NO7P9Mw" alt="Product 2">
+                <h3>The Souled Store Men's Textured Shirt</h3>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ1XHleyqOHnGqtbco552b85m3d3lTm61FnqqFyH9KdK3IfrwJhwzL9D0rfA5jSXsNxgOWRDwyriDrXCs87AXa8msR8P_poM4rMWpLmnzmNwjaFeJL9p1tlYg" alt="Product 2">
+                <h3>H&M Men Loose Fit Sweatshirt For Men (Beige, M)</h3>
+                <p>1599</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSZnNutye1wMeI7t-NKCWVX9qp_hw3_3KLRmkM9YCb2XfzwyFONQIAp9mHT8q6t4UR-9OUJcYcFjlB7KT_qYfA2hScHPzJEc2ICHv-ZfrifsX-kg0Yp0Kncgw" alt="Product 2">
+                <h3>Off Duty Men's Baggy Loose Fit Pants</h3>
+                <p>1999</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSYVIzwZgcZ5W1bvfxRXNKYDcirTIJDRwzzMf3if-dfoGn_5x3Db47-lC6gM83yi2C9tDrr_Dr2O0jL4EoKpIIHEHgTAJyl" alt="Product 2">
+                <h3>H&M Men's Relaxed Fit Cargo Trousers</h3>
+                <p>1499</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSf6Ey1sqMpaJ4HLA60Zsqh0Rc3DDXO5Tgc-0UWycPuSkWB2VMl-6el2Svzy_3BG4ARe2TwCd6h0j9B4nVF6sM35BFAwowzOcLH1ap2dm_DRB97bkySARBk" alt="Product 2">
+                <h3>Highlander Men's Slim Fit Trousers</h3>
+                <p>399</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTjPJ5muYbGG_gSgvmlxwq32u4bJ31OmiIE7wcSNrS3noZ5MtY51R14V6Hyh_PT5MU-07St8n08mM6gYEeC_aTG0pbjhMi2raFFhBJdhFKxDksV3jwzrOfJ8V53hgSwkJj8BYoIxNUR&usqp=CAc" alt="Product 2">
+                <h3>H&M
+                    Men Black Relaxed Fit Sweatshirt</h3>
+                <p>199</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQCdTOqPIQYvgu6NFqmXXLvzA23ldRcNNMEqhpLhr5RZhmt7JWYv6V2DfMI40DbGwW-ydTkvNFttix348ONT8-p011FT11nibKFBiJBQkneZxxyHd2gDi7j" alt="Product 2">
+                <h3>The Souled Store Men's Official Squid Game T-Shirt</h3>
+                <p>1111</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSutFC-8OqGcV1GnSwLIAAiznpD8yCfPrdNVRo1MapLn4pgI7f2SJGhuqI2JI_gQw0Gc-rQlz5YwifB9P6SQJRfcqIUiA8G-WmWJNplq0A" alt="Product 2">
+                <h3>URB_N Men's Regular Fit Textured T-shirt</h3>
+                <p>2445</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRKWjj_q-RCU2TBVIowrzo3Re1z67dgXwl2YshmyMgnSTdf0ZKq57yWlaXPS0-ZhCgn_x6MQBOkm7OkSiIt2CwuwNMNx5I4TdVl4NHSHLo" alt="Product 2">
+                <h3>The Roadster Lifestyle Co. Dyed Relaxed Fit T-shirt</h3>
+                <p>$4600</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTGFOUMN38JfQdgHdm4BP9-XoBrLuBaxC1SO-YPZi9R1Z1-eSDEwHHTAGS6WqS_W_V5qx3KP8x6LxM8qxe5qQoV7lAYHuV7X_fgJbAxRCNNBJvW3vxaxELKkw" alt="Product 2">
+                <h3>Roadster Men's Brand Logo Printed T-shirt</h3>
+                <p>2399</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR3rfTqhoyuuN66--KSCygBkQFGg1oX8OZqKAxuQi6IxF6Iq2I_jKPbg0re1z3O72sQEZ6XqHT-wpuitT6Zhg1c3cjXMUFJIe_dQncqGYlm" alt="Product 2">
+                <h3>NETPLAY Men Striped Slim Fit Shirt For Men (White, 42)</h3>
+                <p>510</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRAnaiFYT-lQapAK71E_uumJRUKyGz-YGGfiD_fEKSaa3uQ7gDDNzTxuja4GK1jcL7dZ93CrnQ3lHHbCcD3InjMTWphJm_JPJrVVneXV4_Q" alt="Product 2">
+                <h3>The Indian Garage Co Men's. Striped Casual Blue Shirt</h3>
+                <p>1309</p>
+                <button class="add-to-cart-button" data-id="2">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>We are dedicated to providing the best shopping experience with quality products and excellent customer service.</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Shop<a>.</a>IN. All rights reserved.</p>
+    </footer>
+</body>
+</html>
